@@ -239,11 +239,13 @@ img{max-width:100%;display:block}
   <div style="border-top:1px solid var(--border)">
     <div class="opp-item">
       <h3>Canvassing &mdash; Marysville</h3>
-      <p>Every Sunday at 2:00 PM. Talk to neighbors about the issues and encourage everyone to vote. Contact Sandra Fiehrer to get started: <a href="mailto:gobucksgal@gmail.com">gobucksgal@gmail.com</a></p>
+      <p>Every Sunday at 2:00 PM. Talk to neighbors about the issues and encourage everyone to vote.</p>
+      <button onclick="openCanvasModal()" class="btn btn-navy" style="margin-top:12px;border:none;cursor:pointer">Sign up to canvass</button>
     </div>
     <div class="opp-item">
       <h3>Canvassing &mdash; Dublin</h3>
-      <p>Every Sunday at 1:00 PM. Same mission, different neighborhood. Contact Sandra Fiehrer: <a href="mailto:gobucksgal@gmail.com">gobucksgal@gmail.com</a></p>
+      <p>Every Sunday at 1:00 PM. Same mission, different neighborhood.</p>
+      <button onclick="openCanvasModal()" class="btn btn-navy" style="margin-top:12px;border:none;cursor:pointer">Sign up to canvass</button>
     </div>
     <div class="opp-item">
       <h3>Have another skill to offer?</h3>
@@ -279,4 +281,93 @@ img{max-width:100%;display:block}
 <span>Not affiliated with any federal candidate committee.</span>
 </div>
 </footer>
+
+<!-- Canvassing Signup Modal -->
+<div id="canvas-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:1000;align-items:center;justify-content:center;padding:20px">
+  <div style="background:#fff;max-width:480px;width:100%;padding:36px;position:relative;border-top:5px solid var(--red)">
+    <button onclick="closeCanvasModal()" style="position:absolute;top:14px;right:18px;background:none;border:none;font-size:22px;cursor:pointer;color:var(--muted);line-height:1">&times;</button>
+    <div style="font-size:12px;font-weight:700;color:var(--red);letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px">Canvassing Signup</div>
+    <h3 style="font-family:'Playfair Display',serif;font-size:24px;color:var(--navy);margin-bottom:6px">Sign up to canvass</h3>
+    <p style="font-size:14px;color:var(--muted);margin-bottom:24px">Fill out the form below and Sandra Fiehrer will be in touch with details.</p>
+
+    <form id="canvas-form" style="display:flex;flex-direction:column;gap:12px">
+      <input type="text" id="cv-name" placeholder="Your name" required
+        style="padding:12px 14px;font-size:15px;border:1px solid var(--border);border-radius:2px;font-family:'Source Sans 3',sans-serif;outline:none;color:var(--ink)">
+      <input type="email" id="cv-email" placeholder="Email address" required
+        style="padding:12px 14px;font-size:15px;border:1px solid var(--border);border-radius:2px;font-family:'Source Sans 3',sans-serif;outline:none;color:var(--ink)">
+      <textarea id="cv-msg" placeholder="Anything else Sandra should know? (optional)" rows="3"
+        style="padding:12px 14px;font-size:15px;border:1px solid var(--border);border-radius:2px;font-family:'Source Sans 3',sans-serif;outline:none;color:var(--ink);resize:vertical"></textarea>
+      <button type="submit" id="cv-btn"
+        style="padding:13px;background:var(--red);color:#fff;font-size:15px;font-weight:700;border:none;border-radius:2px;cursor:pointer;font-family:'Source Sans 3',sans-serif;letter-spacing:.03em">
+        Send to Sandra &rarr;
+      </button>
+    </form>
+
+    <div id="canvas-thanks" style="display:none;text-align:center;padding:20px 0">
+      <div style="font-size:40px;margin-bottom:12px">&#10003;</div>
+      <div style="font-family:'Playfair Display',serif;font-size:20px;color:var(--navy);font-weight:700;margin-bottom:8px">You're signed up!</div>
+      <p style="font-size:14px;color:var(--muted)">Sandra will be in touch with details about your first canvassing shift. See you on Sunday!</p>
+    </div>
+  </div>
+</div>
+
+<script>
+function openCanvasModal() {
+  var m = document.getElementById('canvas-modal');
+  m.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+function closeCanvasModal() {
+  document.getElementById('canvas-modal').style.display = 'none';
+  document.body.style.overflow = '';
+}
+// Close on backdrop click
+document.getElementById('canvas-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeCanvasModal();
+});
+// Close on Escape key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeCanvasModal();
+});
+
+document.getElementById('canvas-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  var btn = document.getElementById('cv-btn');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+
+  var iframe = document.createElement('iframe');
+  iframe.name = 'canvas-iframe';
+  iframe.style.display = 'none';
+  document.body.appendChild(iframe);
+
+  var form = document.createElement('form');
+  form.method = 'POST';
+  form.action = 'https://docs.google.com/forms/d/e/1FAIpQLSfR86JCe_79uWbkxue5yGNvVDbZ2ZEyPDIziw1sqBzpbeUzyw/formResponse';
+  form.target = 'canvas-iframe';
+
+  var fields = {
+    'entry.1372918506': document.getElementById('cv-name').value,
+    'entry.1461524623': document.getElementById('cv-email').value,
+    'entry.180655904': document.getElementById('cv-msg').value
+  };
+
+  for (var key in fields) {
+    var input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = key;
+    input.value = fields[key];
+    form.appendChild(input);
+  }
+
+  document.body.appendChild(form);
+  form.submit();
+
+  setTimeout(function() {
+    document.getElementById('canvas-form').style.display = 'none';
+    document.getElementById('canvas-thanks').style.display = 'block';
+  }, 800);
+});
+</script>
+
 </body></html>
