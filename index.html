@@ -301,22 +301,77 @@ tick();setInterval(tick,1000);
     <div style="font-size:13px;font-weight:700;color:var(--gold);letter-spacing:.06em;text-transform:uppercase;margin-bottom:12px">Stay in the loop</div>
     <h2 style="font-family:'Playfair Display',serif;font-size:32px;color:#fff;margin-bottom:12px;font-weight:900">Join our mailing list</h2>
     <p style="font-size:16px;color:rgba(255,255,255,.65);margin-bottom:32px;line-height:1.6">Get <em>The Union County Democrat</em> newsletter, event invitations, and action alerts delivered to your inbox.</p>
-    <form name="signup" action="https://docs.google.com/forms/d/e/1FAIpQLScDTHgVJUKjeZeYVCOqWqlF5aS0roMzemYqNmTa1RUC95eQiQ/formResponse" method="POST" target="_blank"
-      style="display:flex;flex-direction:column;gap:12px;max-width:420px;margin:0 auto">
+    <form id="signup-form" style="display:flex;flex-direction:column;gap:12px;max-width:420px;margin:0 auto">
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-        <input type="text" name="entry.726457984" placeholder="First name" required
+        <input type="text" id="sig-first" placeholder="First name" required
           style="padding:13px 16px;font-size:15px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:#fff;border-radius:2px;font-family:'Source Sans 3',sans-serif;outline:none">
-        <input type="text" name="entry.1374645938" placeholder="Last name"
+        <input type="text" id="sig-last" placeholder="Last name"
           style="padding:13px 16px;font-size:15px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:#fff;border-radius:2px;font-family:'Source Sans 3',sans-serif;outline:none">
       </div>
-      <input type="email" name="entry.1507458951" placeholder="Email address" required
+      <input type="email" id="sig-email" placeholder="Email address" required
         style="padding:13px 16px;font-size:15px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:#fff;border-radius:2px;font-family:'Source Sans 3',sans-serif;outline:none">
-      <button type="submit"
-        style="padding:14px;background:var(--red);color:#fff;font-size:15px;font-weight:700;border:none;border-radius:2px;cursor:pointer;font-family:'Source Sans 3',sans-serif;letter-spacing:.03em">
+      <button type="submit" id="sig-btn"
+        style="padding:14px;background:var(--red);color:#fff;font-size:15px;font-weight:700;border:none;border-radius:2px;cursor:pointer;font-family:'Source Sans 3',sans-serif;letter-spacing:.03em;transition:background .2s">
         Subscribe &rarr;
       </button>
     </form>
-    <p style="font-size:12px;color:rgba(255,255,255,.35);margin-top:16px">We respect your privacy. Unsubscribe any time by emailing <a href="mailto:ucohdems@gmail.com" style="color:rgba(255,255,255,.5)">ucohdems@gmail.com</a>.</p>
+
+    <!-- Thank you message (hidden until submission) -->
+    <div id="signup-thanks" style="display:none;max-width:420px;margin:0 auto;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);border-radius:4px;padding:24px;text-align:center">
+      <div style="font-size:36px;margin-bottom:10px">&#10003;</div>
+      <div style="font-family:'Playfair Display',serif;font-size:20px;color:#fff;font-weight:700;margin-bottom:6px">You're on the list!</div>
+      <div style="font-size:14px;color:rgba(255,255,255,.65);line-height:1.6">Thanks for signing up. Watch your inbox for the next issue of <em>The Union County Democrat</em>.</div>
+    </div>
+
+    <p style="font-size:12px;color:rgba(255,255,255,.35);margin-top:16px;max-width:420px;margin-left:auto;margin-right:auto">We respect your privacy. Unsubscribe any time by emailing <a href="mailto:ucohdems@gmail.com" style="color:rgba(255,255,255,.5)">ucohdems@gmail.com</a>.</p>
+
+    <script>
+    document.getElementById('signup-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var btn = document.getElementById('sig-btn');
+      btn.textContent = 'Submitting...';
+      btn.disabled = true;
+
+      var formData = new FormData();
+      formData.append('entry.726457984', document.getElementById('sig-first').value);
+      formData.append('entry.1374645938', document.getElementById('sig-last').value);
+      formData.append('entry.1507458951', document.getElementById('sig-email').value);
+
+      // Google Forms blocks fetch due to CORS, so we use a hidden iframe trick
+      var iframe = document.createElement('iframe');
+      iframe.name = 'hidden-iframe';
+      iframe.style.display = 'none';
+      document.body.appendChild(iframe);
+
+      var form = document.createElement('form');
+      form.method = 'POST';
+      form.action = 'https://docs.google.com/forms/d/e/1FAIpQLScDTHgVJUKjeZeYVCOqWqlF5aS0roMzemYqNmTa1RUC95eQiQ/formResponse';
+      form.target = 'hidden-iframe';
+
+      var fields = {
+        'entry.726457984': document.getElementById('sig-first').value,
+        'entry.1374645938': document.getElementById('sig-last').value,
+        'entry.1507458951': document.getElementById('sig-email').value
+      };
+
+      for (var key in fields) {
+        var input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = key;
+        input.value = fields[key];
+        form.appendChild(input);
+      }
+
+      document.body.appendChild(form);
+      form.submit();
+
+      // Show thank you message after short delay
+      setTimeout(function() {
+        document.getElementById('signup-form').style.display = 'none';
+        document.getElementById('signup-thanks').style.display = 'block';
+      }, 800);
+    });
+    </script>
   </div>
 </div>
 
