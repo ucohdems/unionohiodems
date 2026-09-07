@@ -125,6 +125,92 @@ img{max-width:100%;display:block}
   .nl-item{flex-direction:column;align-items:flex-start}
 }
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+@media(max-width:768px){
+  /* NAV */
+  .nav-inner{padding:0 16px;height:56px}
+  .nav-brand-text{font-size:11px}
+  .nav-brand img{width:34px;height:34px}
+  .nav-links{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .nav-links a{padding:0 9px;font-size:11px;white-space:nowrap}
+
+  /* LAYOUT */
+  .page-wrap{padding:36px 20px 64px}
+  .page-wrap.narrow{padding:36px 20px 64px}
+
+  /* GRIDS → single column */
+  .cols-2,.cols-3{grid-template-columns:1fr}
+  .give-method:nth-child(2n){border-right:1px solid var(--border)}
+  div[style*="grid-template-columns:1fr 1fr"]{display:block}
+  div[style*="grid-template-columns:2fr 1fr 1fr"]{display:block}
+
+  /* COUNTDOWN */
+  .countdown-hero{padding:44px 20px 36px}
+  .cd-number-big{font-size:clamp(80px,28vw,140px);letter-spacing:-2px}
+  .cd-label-big{font-size:13px;letter-spacing:.08em}
+  .cd-sub-grid{gap:14px;margin-top:28px;padding-top:28px}
+  .cd-n{font-size:30px}
+  .cd-divider{font-size:26px}
+
+  /* HERO SECTIONS */
+  div.countdown-hero + div{padding:12px 20px;font-size:13px}
+  .page-wrap > div:first-child{padding-bottom:36px;margin-bottom:36px}
+
+  /* TYPOGRAPHY */
+  h1{font-size:clamp(28px,8vw,42px) !important}
+  h2{font-size:clamp(20px,5vw,28px) !important}
+
+  /* CARDS */
+  .card{padding:24px 20px}
+  .card-navy{padding:24px 20px}
+
+  /* CANDIDATES */
+  .cand{padding:24px 20px}
+  .cand h3{font-size:22px !important;flex-direction:column;align-items:flex-start !important;gap:12px !important}
+
+  /* MEMBERS */
+  .members{grid-template-columns:1fr 1fr}
+
+  /* FOOTER */
+  .site-footer{padding:40px 20px 24px}
+  .footer-grid{grid-template-columns:1fr;gap:28px;padding-bottom:28px}
+  .footer-base{flex-direction:column;gap:6px;text-align:center;font-size:11px}
+
+  /* VOLUNTEER PAGE */
+  div[style*="display:flex;align-items:flex-start;justify-content:space-between"]{flex-direction:column}
+  .opp-item h3{font-size:18px}
+
+  /* DONATE PAGE */
+  div[style*="grid-template-columns:1fr 1fr"]{display:block}
+  .give-method{border-right:none !important}
+
+  /* NEWSLETTER LIST */
+  .nl-item{flex-direction:column;align-items:flex-start;gap:12px}
+
+  /* BUTTONS */
+  .btn-lg{font-size:14px;padding:13px 20px}
+  div[style*="display:flex;gap:12px"]{flex-direction:column;align-items:flex-start}
+
+  /* ABOUT PLATFORM LIST */
+  div[style*="grid-template-columns:1fr 1fr"]{display:block}
+
+  /* VOTE TABLE */
+  .data-table{font-size:13px}
+  .data-table th,.data-table td{padding:8px 12px}
+
+  /* DARK HERO SECTIONS */
+  div[style*="padding:56px 28px"]{padding:40px 20px !important}
+  div[style*="padding:72px 28px"]{padding:48px 20px !important}
+}
+
+@media(max-width:480px){
+  .nav-links a{padding:0 7px;font-size:10px}
+  .cd-number-big{font-size:clamp(72px,30vw,110px)}
+  .members{grid-template-columns:1fr}
+  .cols-2{grid-template-columns:1fr}
+}
+
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 </head>
 <body>
@@ -156,7 +242,7 @@ img{max-width:100%;display:block}
   <div style="padding-bottom:56px;border-bottom:1px solid var(--border);margin-bottom:56px">
     <hr class="rule">
     <h1 style="font-size:clamp(32px,5vw,52px);color:var(--navy);margin-bottom:18px;max-width:700px">Fighting for Union County&rsquo;s families, workers, and future.</h1>
-    <p style="font-size:19px;color:var(--muted);max-width:560px;font-weight:300;line-height:1.6;margin-bottom:32px">We&rsquo;re building a Democratic presence right here in Union County &mdash; one neighbor, one conversation, one vote at a time.</p>
+    <p style="font-size:19px;color:var(--muted);max-width:560px;font-weight:300;line-height:1.6;margin-bottom:32px">We&rsquo;re building a Democratic presence right here in Marysville &mdash; one neighbor, one conversation, one vote at a time.</p>
     <div style="display:flex;gap:12px;flex-wrap:wrap">
       <a href="vote.html" class="btn btn-red btn-lg">Make your vote plan</a>
       <a href="volunteering.html" class="btn btn-navy btn-lg">Volunteer at HQ</a>
@@ -208,6 +294,31 @@ function tick(){
 }
 tick();setInterval(tick,1000);
 </script>
+
+
+<div style="background:var(--navy);padding:64px 28px;border-top:4px solid var(--red)">
+  <div style="max-width:560px;margin:0 auto;text-align:center">
+    <div style="font-size:13px;font-weight:700;color:var(--gold);letter-spacing:.06em;text-transform:uppercase;margin-bottom:12px">Stay in the loop</div>
+    <h2 style="font-family:'Playfair Display',serif;font-size:32px;color:#fff;margin-bottom:12px;font-weight:900">Join our mailing list</h2>
+    <p style="font-size:16px;color:rgba(255,255,255,.65);margin-bottom:32px;line-height:1.6">Get <em>The Union County Democrat</em> newsletter, event invitations, and action alerts delivered to your inbox.</p>
+    <form name="signup" action="https://docs.google.com/forms/d/e/1FAIpQLScDTHgVJUKjeZeYVCOqWqlF5aS0roMzemYqNmTa1RUC95eQiQ/formResponse" method="POST" target="_blank"
+      style="display:flex;flex-direction:column;gap:12px;max-width:420px;margin:0 auto">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <input type="text" name="entry.726457984" placeholder="First name" required
+          style="padding:13px 16px;font-size:15px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:#fff;border-radius:2px;font-family:'Source Sans 3',sans-serif;outline:none">
+        <input type="text" name="entry.1374645938" placeholder="Last name"
+          style="padding:13px 16px;font-size:15px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:#fff;border-radius:2px;font-family:'Source Sans 3',sans-serif;outline:none">
+      </div>
+      <input type="email" name="entry.1507458951" placeholder="Email address" required
+        style="padding:13px 16px;font-size:15px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:#fff;border-radius:2px;font-family:'Source Sans 3',sans-serif;outline:none">
+      <button type="submit"
+        style="padding:14px;background:var(--red);color:#fff;font-size:15px;font-weight:700;border:none;border-radius:2px;cursor:pointer;font-family:'Source Sans 3',sans-serif;letter-spacing:.03em">
+        Subscribe &rarr;
+      </button>
+    </form>
+    <p style="font-size:12px;color:rgba(255,255,255,.35);margin-top:16px">We respect your privacy. Unsubscribe any time by emailing <a href="mailto:ucohdems@gmail.com" style="color:rgba(255,255,255,.5)">ucohdems@gmail.com</a>.</p>
+  </div>
+</div>
 
 <footer class="site-footer">
 <div class="footer-grid">

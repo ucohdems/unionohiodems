@@ -125,6 +125,92 @@ img{max-width:100%;display:block}
   .nl-item{flex-direction:column;align-items:flex-start}
 }
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+@media(max-width:768px){
+  /* NAV */
+  .nav-inner{padding:0 16px;height:56px}
+  .nav-brand-text{font-size:11px}
+  .nav-brand img{width:34px;height:34px}
+  .nav-links{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .nav-links a{padding:0 9px;font-size:11px;white-space:nowrap}
+
+  /* LAYOUT */
+  .page-wrap{padding:36px 20px 64px}
+  .page-wrap.narrow{padding:36px 20px 64px}
+
+  /* GRIDS → single column */
+  .cols-2,.cols-3{grid-template-columns:1fr}
+  .give-method:nth-child(2n){border-right:1px solid var(--border)}
+  div[style*="grid-template-columns:1fr 1fr"]{display:block}
+  div[style*="grid-template-columns:2fr 1fr 1fr"]{display:block}
+
+  /* COUNTDOWN */
+  .countdown-hero{padding:44px 20px 36px}
+  .cd-number-big{font-size:clamp(80px,28vw,140px);letter-spacing:-2px}
+  .cd-label-big{font-size:13px;letter-spacing:.08em}
+  .cd-sub-grid{gap:14px;margin-top:28px;padding-top:28px}
+  .cd-n{font-size:30px}
+  .cd-divider{font-size:26px}
+
+  /* HERO SECTIONS */
+  div.countdown-hero + div{padding:12px 20px;font-size:13px}
+  .page-wrap > div:first-child{padding-bottom:36px;margin-bottom:36px}
+
+  /* TYPOGRAPHY */
+  h1{font-size:clamp(28px,8vw,42px) !important}
+  h2{font-size:clamp(20px,5vw,28px) !important}
+
+  /* CARDS */
+  .card{padding:24px 20px}
+  .card-navy{padding:24px 20px}
+
+  /* CANDIDATES */
+  .cand{padding:24px 20px}
+  .cand h3{font-size:22px !important;flex-direction:column;align-items:flex-start !important;gap:12px !important}
+
+  /* MEMBERS */
+  .members{grid-template-columns:1fr 1fr}
+
+  /* FOOTER */
+  .site-footer{padding:40px 20px 24px}
+  .footer-grid{grid-template-columns:1fr;gap:28px;padding-bottom:28px}
+  .footer-base{flex-direction:column;gap:6px;text-align:center;font-size:11px}
+
+  /* VOLUNTEER PAGE */
+  div[style*="display:flex;align-items:flex-start;justify-content:space-between"]{flex-direction:column}
+  .opp-item h3{font-size:18px}
+
+  /* DONATE PAGE */
+  div[style*="grid-template-columns:1fr 1fr"]{display:block}
+  .give-method{border-right:none !important}
+
+  /* NEWSLETTER LIST */
+  .nl-item{flex-direction:column;align-items:flex-start;gap:12px}
+
+  /* BUTTONS */
+  .btn-lg{font-size:14px;padding:13px 20px}
+  div[style*="display:flex;gap:12px"]{flex-direction:column;align-items:flex-start}
+
+  /* ABOUT PLATFORM LIST */
+  div[style*="grid-template-columns:1fr 1fr"]{display:block}
+
+  /* VOTE TABLE */
+  .data-table{font-size:13px}
+  .data-table th,.data-table td{padding:8px 12px}
+
+  /* DARK HERO SECTIONS */
+  div[style*="padding:56px 28px"]{padding:40px 20px !important}
+  div[style*="padding:72px 28px"]{padding:48px 20px !important}
+}
+
+@media(max-width:480px){
+  .nav-links a{padding:0 7px;font-size:10px}
+  .cd-number-big{font-size:clamp(72px,30vw,110px)}
+  .members{grid-template-columns:1fr}
+  .cols-2{grid-template-columns:1fr}
+}
+
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 </head>
 <body>
