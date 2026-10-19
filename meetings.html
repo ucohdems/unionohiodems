@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meetings - Union County Democratic Party</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0a2557;--red:#c8102e;--gold:#f0b429;--cream:#f8f7f4;--ink:#1c1c2e;--muted:#64697a;--border:#e2e0db;--white:#ffffff}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Source Sans 3',Arial,sans-serif;color:var(--ink);background:var(--cream);line-height:1.6}
+a{color:var(--navy)}
+/* NAV */
+.site-nav{background:var(--navy);position:sticky;top:0;z-index:200;border-bottom:3px solid var(--red)}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 28px;display:flex;align-items:center;height:64px}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0;margin-right:auto}
+.nav-brand img{width:40px;height:40px;object-fit:contain;border-radius:50%;background:white;padding:2px}
+.nav-brand-text{font-family:'Playfair Display',serif;font-size:13px;font-weight:700;color:#fff;line-height:1.25}
+.nav-links{display:flex;align-items:stretch;height:64px}
+.nav-links a{display:flex;align-items:center;color:rgba(255,255,255,0.72);font-size:13px;font-weight:600;text-decoration:none;padding:0 13px;border-bottom:3px solid transparent;letter-spacing:0.02em;white-space:nowrap;transition:color .15s,border-color .15s}
+.nav-links a:hover{color:#fff;border-bottom-color:rgba(255,255,255,.25)}
+.nav-links a.active{color:#fff;border-bottom-color:var(--red)}
+.nav-links a.vote-link{color:var(--gold);font-weight:700}
+@media(max-width:700px){.nav-links a{padding:0 8px;font-size:12px}}
+/* HERO */
+.page-hero{background:var(--navy);padding:52px 28px 44px;text-align:center;border-bottom:6px solid var(--red)}
+.page-hero h1{font-family:'Playfair Display',serif;font-size:40px;font-weight:900;color:#fff;margin-bottom:10px}
+.page-hero p{font-size:17px;color:rgba(255,255,255,.75);max-width:520px;margin:0 auto}
+/* LOCATION BANNER */
+.location-banner{background:var(--gold);padding:16px 28px;text-align:center}
+.location-banner p{font-size:15px;font-weight:700;color:var(--navy);margin:0}
+.location-banner p span{font-weight:400}
+/* CONTENT */
+.content{max-width:760px;margin:0 auto;padding:48px 28px 64px}
+/* SECTION HEADERS */
+.section-head{display:flex;align-items:center;gap:12px;margin-bottom:24px;margin-top:48px}
+.section-head:first-of-type{margin-top:0}
+.section-head h2{font-family:'Playfair Display',serif;font-size:24px;color:var(--navy)}
+.section-divider{flex:1;height:2px;background:var(--border)}
+/* MEETING CARD */
+.meeting-card{background:#fff;border:1px solid var(--border);border-radius:8px;display:flex;gap:0;margin-bottom:20px;overflow:hidden;box-shadow:0 1px 4px rgba(10,37,87,.06)}
+.meeting-card.special{border-color:var(--red)}
+.meeting-date-col{background:var(--navy);padding:20px 22px;text-align:center;min-width:90px;display:flex;flex-direction:column;justify-content:center;flex-shrink:0}
+.meeting-card.special .meeting-date-col{background:var(--red)}
+.meeting-month{font-size:12px;font-weight:700;color:rgba(200,220,255,.8);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:2px}
+.meeting-card.special .meeting-month{color:rgba(255,255,255,.7)}
+.meeting-day{font-family:'Playfair Display',serif;font-size:44px;font-weight:900;color:var(--gold);line-height:1}
+.meeting-dow{font-size:11px;font-weight:600;color:rgba(200,220,255,.7);text-transform:uppercase;letter-spacing:1px;margin-top:4px}
+.meeting-card.special .meeting-dow{color:rgba(255,255,255,.6)}
+.meeting-body{padding:20px 24px;flex:1}
+.meeting-body h3{font-family:'Playfair Display',serif;font-size:19px;color:var(--navy);margin-bottom:6px}
+.meeting-card.special .meeting-body h3{color:var(--red)}
+.meeting-meta{font-size:14px;color:var(--muted);margin-bottom:10px;line-height:1.7}
+.meeting-meta strong{color:var(--ink)}
+.meeting-note{font-size:14px;color:#444;line-height:1.7;background:var(--cream);border-left:4px solid var(--gold);padding:10px 14px;border-radius:0 4px 4px 0;margin-top:10px}
+/* INFO BOX */
+.info-box{background:#fff;border:1px solid var(--border);border-radius:8px;padding:28px 32px;margin-bottom:32px}
+.info-box h3{font-family:'Playfair Display',serif;font-size:18px;color:var(--navy);margin-bottom:12px}
+.info-box p{font-size:15px;color:#444;line-height:1.7;margin-bottom:10px}
+.info-box p:last-child{margin-bottom:0}
+.info-box a{color:var(--red);font-weight:600;text-decoration:none}
+.info-box a:hover{text-decoration:underline}
+/* MAP LINK */
+.map-btn{display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:#fff;text-decoration:none;font-size:13px;font-weight:700;padding:9px 18px;border-radius:4px;margin-top:10px}
+.map-btn:hover{background:#0d2f6b}
+/* PAST NOTE */
+.past-note{font-size:13px;color:var(--muted);font-style:italic;text-align:center;padding:16px 0 0}
+/* FOOTER */
+.site-footer{background:var(--navy);color:rgba(255,255,255,.6);padding:40px 28px;text-align:center;font-size:13px;margin-top:0}
+.site-footer .footer-brand-text{color:rgba(255,255,255,.8);font-size:14px;line-height:1.8;margin-bottom:20px}
+.footer-links{display:flex;justify-content:center;flex-wrap:wrap;gap:6px 18px;margin-bottom:20px}
+.footer-links a{color:rgba(255,255,255,.55);text-decoration:none;font-size:13px}
+.footer-links a:hover{color:#fff}
+.footer-bottom{font-size:11px;color:rgba(255,255,255,.3);margin-top:16px}
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <img src="ucdp-logo.png" alt="UCDP Logo">
+      <div class="nav-brand-text">Union County<br>Democratic Party</div>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="vote.html" class="vote-link">Vote</a>
+      <a href="meetings.html" class="active">Meetings</a>
+      <a href="about.html">About</a>
+      <a href="candidates.html">Candidates</a>
+      <a href="volunteering.html">Volunteer</a>
+      <a href="donate.html">Donate</a>
+      <a href="newsletters.html">Newsletters</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <h1>&#128197; Meetings &amp; Events</h1>
+  <p>Everyone is welcome. Come meet your neighbors, stay informed, and get involved.</p>
+</div>
+
+<div class="location-banner">
+  <p>&#128205; All meetings are held at <strong>UCDP Headquarters &mdash; 106 S. Main Street, Marysville, OH 43040</strong> <span>unless otherwise noted.</span></p>
+</div>
+
+<div class="content">
+
+  <!-- UPCOMING -->
+  <div class="section-head">
+    <h2>Upcoming</h2>
+    <div class="section-divider"></div>
+  </div>
+
+  <!-- Oct 27 Monthly Meeting -->
+  <div class="meeting-card">
+    <div class="meeting-date-col">
+      <div class="meeting-month">Oct</div>
+      <div class="meeting-day">27</div>
+      <div class="meeting-dow">Tuesday</div>
+    </div>
+    <div class="meeting-body">
+      <h3>October Monthly Meeting</h3>
+      <div class="meeting-meta">
+        <strong>6:00 PM</strong> Social Hour &nbsp;&bull;&nbsp; <strong>7:00 PM</strong> Meeting Begins<br>
+        106 S. Main Street, Marysville, OH 43040
+      </div>
+      <div class="meeting-note">Our final meeting before Election Day! All members and interested neighbors welcome.</div>
+    </div>
+  </div>
+
+  <!-- Nov 3 Watch Party -->
+  <div class="meeting-card special">
+    <div class="meeting-date-col">
+      <div class="meeting-month">Nov</div>
+      <div class="meeting-day">3</div>
+      <div class="meeting-dow">Tuesday</div>
+    </div>
+    <div class="meeting-body">
+      <h3>&#127881; Election Night Watch Party</h3>
+      <div class="meeting-meta">
+        <strong>Doors open at 6:00 PM</strong><br>
+        106 S. Main Street, Marysville, OH 43040
+      </div>
+      <div class="meeting-note">BYO! Bring food and drinks for yourself, or bring something to share &mdash; whatever works for you. We&rsquo;ll watch the results come in together and celebrate the work we&rsquo;ve done.</div>
+    </div>
+  </div>
+
+  <!-- Nov 24 Monthly Meeting -->
+  <div class="meeting-card">
+    <div class="meeting-date-col">
+      <div class="meeting-month">Nov</div>
+      <div class="meeting-day">24</div>
+      <div class="meeting-dow">Tuesday</div>
+    </div>
+    <div class="meeting-body">
+      <h3>November Monthly Meeting</h3>
+      <div class="meeting-meta">
+        <strong>6:00 PM</strong> Social Hour &nbsp;&bull;&nbsp; <strong>7:00 PM</strong> Meeting Begins<br>
+        106 S. Main Street, Marysville, OH 43040
+      </div>
+      <div class="meeting-note">Our post-election debrief and regular business meeting. Mark your calendar!</div>
+    </div>
+  </div>
+
+  <!-- ABOUT OUR MEETINGS -->
+  <div class="section-head">
+    <h2>About Our Meetings</h2>
+    <div class="section-divider"></div>
+  </div>
+
+  <div class="info-box">
+    <h3>When do you meet?</h3>
+    <p>The Union County Democratic Party holds a <strong>monthly membership meeting on the last Tuesday of each month</strong>. Doors open at 6:00 PM for the social hour; the formal meeting begins at 7:00 PM and typically wraps up by 8:30 PM.</p>
+    <p>Occasional special events &mdash; candidate forums, watch parties, canvassing kickoffs &mdash; are announced in our monthly newsletter and posted here as they're scheduled.</p>
+  </div>
+
+  <div class="info-box">
+    <h3>Who can come?</h3>
+    <p>All meetings are <strong>open to the public</strong>. You don&rsquo;t need to be a registered Democrat, a dues-paying member, or a Union County resident to attend. Bring a friend, bring a neighbor, bring a curious Republican &mdash; all are welcome.</p>
+    <p>If you&rsquo;d like to get involved or have a question before showing up, drop us a line at <a href="mailto:ucohdems@gmail.com">ucohdems@gmail.com</a>.</p>
+  </div>
+
+  <div class="info-box">
+    <h3>Where is headquarters?</h3>
+    <p><strong>106 S. Main Street, Marysville, OH 43040</strong><br>
+    We&rsquo;re in downtown Marysville, right on the square. Street parking is available on Main Street and the surrounding blocks.</p>
+    <a href="https://maps.google.com/?q=106+S+Main+Street+Marysville+OH+43040" target="_blank" class="map-btn">&#128205; Open in Google Maps</a>
+  </div>
+
+  <p class="past-note">Meeting schedule is updated each month. Check our <a href="newsletters.html">newsletters</a> for the latest announcements.</p>
+
+</div>
+
+<footer class="site-footer">
+  <div class="footer-brand-text">106 S Main Street<br>Marysville, OH 43040<br><br>(937) 243-1514<br><a href="mailto:ucohdems@gmail.com" style="color:rgba(255,255,255,.6)">ucohdems@gmail.com</a></div>
+  <div class="footer-links">
+    <a href="index.html">Home</a><a href="vote.html">Vote</a><a href="meetings.html">Meetings</a><a href="about.html">About</a>
+    <a href="candidates.html">Candidates</a><a href="volunteering.html">Volunteer</a>
+    <a href="donate.html">Donate</a><a href="newsletters.html">Newsletters</a>
+  </div>
+  <div class="footer-bottom">&copy; 2026 Union County Democratic Party &bull; Marysville, Ohio</div>
+</footer>
+
+</body>
+</html>
